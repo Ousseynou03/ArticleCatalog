@@ -13,12 +13,14 @@ import java.io.Serializable;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor @Builder
-public class User implements Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUser;
-    private String lastName;
-    private String FirstName;
-    private String password;
+public class Sale implements Serializable {
 
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idSale;
+    private String Customer;
+    private double delivery;
+    private double total;
+    private double advance;
+    private String creditStatus;
 
 }
