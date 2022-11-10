@@ -38,7 +38,6 @@ public class ArticleCatalogInitServiceImpl implements IArticleCatalogInitService
     public void initUsers() {
         Stream.of("Dione","Ousseynou","Weuz").forEach(usr -> {
             User user = new User();
-            user.setIdUser(Long.valueOf(UUID.randomUUID().toString()));
             user.setFirstName(usr);
             userRepository.save(user);
         });
@@ -49,7 +48,7 @@ public class ArticleCatalogInitServiceImpl implements IArticleCatalogInitService
 
         Stream.of("Coffe","Kits","Phone").forEach(art -> {
             Article article = new Article();
-            article.setIdArticle(Long.valueOf(UUID.randomUUID().toString()));
+
             article.setDesignation(art);
             articleRepository.save(article);
         });
@@ -58,7 +57,7 @@ public class ArticleCatalogInitServiceImpl implements IArticleCatalogInitService
     @Override
     public void initSale() {
         Sale sale = new Sale();
-        sale.setIdSale(Long.valueOf(UUID.randomUUID().toString()));
+
         sale.setAdvance(200.0);
         sale.setCustomer("Dione");
         sale.setDelivery(0.0);
@@ -72,7 +71,7 @@ public class ArticleCatalogInitServiceImpl implements IArticleCatalogInitService
         articleRepository.findAll().forEach(artic -> {
             saleRepository.findAll().forEach(sal -> {
                 RetailSale retailSale = new RetailSale();
-                retailSale.setIdDetail(Long.valueOf(UUID.randomUUID().toString()));
+
                 retailSale.setSale(sal);
                 retailSale.setArticle(artic);
                 retailSale.setDateVente(new Date());

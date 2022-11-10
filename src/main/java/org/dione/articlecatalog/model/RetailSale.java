@@ -1,3 +1,4 @@
+
 package org.dione.articlecatalog.model;
 
 import lombok.AllArgsConstructor;
