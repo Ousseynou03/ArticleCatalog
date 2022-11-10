@@ -9,12 +9,14 @@ import org.dione.articlecatalog.repository.RetailSaleRepository;
 import org.dione.articlecatalog.repository.SaleRepository;
 import org.dione.articlecatalog.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.UUID;
 import java.util.stream.Stream;
 
 @Service
+@Transactional
 public class ArticleCatalogInitServiceImpl implements IArticleCatalogInitService {
 
     private final SaleRepository saleRepository;
