@@ -15,6 +15,7 @@ public class Article implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idArticle;
+    private String codeArticle;
     private String designation;
     private Integer quantity;
     private double price;

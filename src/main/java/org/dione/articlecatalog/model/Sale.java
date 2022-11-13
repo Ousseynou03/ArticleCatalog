@@ -4,11 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.dione.articlecatalog.enums.CreditStatus;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -21,6 +19,8 @@ public class Sale implements Serializable {
     private double delivery;
     private double total;
     private double advance;
-    private String creditStatus;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 15)
+    private CreditStatus creditStatus;
 
 }

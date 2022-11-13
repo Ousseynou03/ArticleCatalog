@@ -1,5 +1,6 @@
 package org.dione.articlecatalog.service;
 
+import org.dione.articlecatalog.enums.CreditStatus;
 import org.dione.articlecatalog.model.Article;
 import org.dione.articlecatalog.model.RetailSale;
 import org.dione.articlecatalog.model.Sale;
@@ -39,6 +40,7 @@ public class ArticleCatalogInitServiceImpl implements IArticleCatalogInitService
         Stream.of("Dione","Ousseynou","Weuz").forEach(usr -> {
             User user = new User();
             user.setFirstName(usr);
+            user.setPassword(UUID.randomUUID().toString());
             userRepository.save(user);
         });
     }
@@ -48,7 +50,7 @@ public class ArticleCatalogInitServiceImpl implements IArticleCatalogInitService
 
         Stream.of("Coffe","Kits","Phone").forEach(art -> {
             Article article = new Article();
-
+            article.setCodeArticle(UUID.randomUUID().toString());
             article.setDesignation(art);
             articleRepository.save(article);
         });
@@ -57,11 +59,10 @@ public class ArticleCatalogInitServiceImpl implements IArticleCatalogInitService
     @Override
     public void initSale() {
         Sale sale = new Sale();
-
-        sale.setAdvance(200.0);
+        sale.setAdvance(Math.random()*1000);
         sale.setCustomer("Dione");
-        sale.setDelivery(0.0);
-        sale.setCreditStatus("Régler");
+        sale.setDelivery(Math.random()*100);
+        sale.setCreditStatus(Math.random()>0.5? CreditStatus.REGLER:CreditStatus.EN_ATTENTE);
         sale.setTotal(sale.getAdvance() - sale.getDelivery());
         saleRepository.save(sale);
     }
@@ -71,7 +72,6 @@ public class ArticleCatalogInitServiceImpl implements IArticleCatalogInitService
         articleRepository.findAll().forEach(artic -> {
             saleRepository.findAll().forEach(sal -> {
                 RetailSale retailSale = new RetailSale();
-
                 retailSale.setSale(sal);
                 retailSale.setArticle(artic);
                 retailSale.setDateVente(new Date());
