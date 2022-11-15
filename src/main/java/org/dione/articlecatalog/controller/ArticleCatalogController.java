@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin("**")
+@CrossOrigin("http://localhost:4200")
 public class ArticleCatalogController {
     private final ArticleRepository articleRepository;
     private final SaleRepository saleRepository;
@@ -32,6 +32,7 @@ public class ArticleCatalogController {
     //Méthode de récupération de tous les articles
     @GetMapping("/allArticles")
     public List<Article> findAllArticles(){
+
         return articleRepository.findAll();
     }
 
