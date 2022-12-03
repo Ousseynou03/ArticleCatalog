@@ -25,19 +25,17 @@ public class ArticleCatalogInitServiceImpl implements IArticleCatalogInitService
     private final UserRepository userRepository;
     private final ArticleRepository articleRepository;
 
-    public ArticleCatalogInitServiceImpl(SaleRepository saleRepository, RetailSaleRepository retailSaleRepository, UserRepository userRepository, ArticleRepository articleRepository) {
+    public ArticleCatalogInitServiceImpl(SaleRepository saleRepository, RetailSaleRepository retailSaleRepository,
+            UserRepository userRepository, ArticleRepository articleRepository) {
         this.saleRepository = saleRepository;
         this.retailSaleRepository = retailSaleRepository;
         this.userRepository = userRepository;
         this.articleRepository = articleRepository;
     }
 
-
-
-
     @Override
     public void initUsers() {
-        Stream.of("Dione","Ousseynou","Weuz").forEach(usr -> {
+        Stream.of("Dione", "Ousseynou", "Weuz").forEach(usr -> {
             User user = new User();
             user.setFirstName(usr);
             user.setPassword(UUID.randomUUID().toString());
@@ -48,7 +46,7 @@ public class ArticleCatalogInitServiceImpl implements IArticleCatalogInitService
     @Override
     public void initArticles() {
 
-        Stream.of("Coffe","Kits","Phone").forEach(art -> {
+        Stream.of("Coffe", "Kits", "Phone", "Chemise", "feuteille").forEach(art -> {
             Article article = new Article();
             article.setCodeArticle(UUID.randomUUID().toString());
             article.setDesignation(art);
@@ -59,10 +57,10 @@ public class ArticleCatalogInitServiceImpl implements IArticleCatalogInitService
     @Override
     public void initSale() {
         Sale sale = new Sale();
-        sale.setAdvance(Math.random()*1000);
+        sale.setAdvance(Math.random() * 1000);
         sale.setCustomer("Dione");
-        sale.setDelivery(Math.random()*100);
-        sale.setCreditStatus(Math.random()>0.5? CreditStatus.REGLER:CreditStatus.EN_ATTENTE);
+        sale.setDelivery(Math.random() * 100);
+        sale.setCreditStatus(Math.random() > 0.5 ? CreditStatus.REGLER : CreditStatus.EN_ATTENTE);
         sale.setTotal(sale.getAdvance() - sale.getDelivery());
         saleRepository.save(sale);
     }
