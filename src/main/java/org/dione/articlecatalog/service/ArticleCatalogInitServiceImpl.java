@@ -74,6 +74,7 @@ public class ArticleCatalogInitServiceImpl implements IArticleCatalogInitService
                 RetailSale retailSale = new RetailSale();
                 retailSale.setSale(sal);
                 retailSale.setArticle(artic);
+                retailSale.setQuantityOrder(2);
                 retailSale.setDateVente(new Date());
                 retailSaleRepository.save(retailSale);
             });

@@ -17,6 +17,7 @@ public class RetailSale implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDetail;
     private Date dateVente;
+    private Integer quantityOrder;
     @ManyToOne
     @JoinColumn(name = "idArticle")
     private Article article;

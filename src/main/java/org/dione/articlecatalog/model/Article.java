@@ -18,6 +18,6 @@ public class Article implements Serializable {
     private String codeArticle;
     private String designation;
     private Integer quantity;
-    private String price;
+    private Integer price;
     private String imageUrl;
 }
